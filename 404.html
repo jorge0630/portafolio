@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada — Jorge Quejada</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/portafolio/src/img/icono.png" type="image/png">
+
+  <!-- Rutas absolutas con el prefijo del proyecto: GitHub Pages sirve este
+       archivo para cualquier URL inexistente, a cualquier profundidad, así
+       que una ruta relativa no resolvería bien. -->
+  <link rel="stylesheet" href="/portafolio/src/css/tokens.css">
+  <link rel="stylesheet" href="/portafolio/src/css/reset.css">
+  <link rel="stylesheet" href="/portafolio/src/css/base.css">
+  <link rel="stylesheet" href="/portafolio/src/css/components.css">
+
+  <style>
+    .error {
+      display: grid;
+      place-content: center;
+      justify-items: center;
+      gap: var(--space-4);
+      min-height: 100dvh;
+      padding: var(--gutter);
+      text-align: center;
+    }
+    .error__code {
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-brand);
+      letter-spacing: var(--tracking-tight);
+    }
+    .error__text {
+      max-width: 34rem;
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+  </style>
+</head>
+<body>
+  <main class="error">
+    <p class="error__code">404</p>
+    <h1>Esta página no existe</h1>
+    <p class="error__text">
+      Puede que el enlace esté mal escrito o que la página se haya movido.
+      Desde el portafolio puedes llegar a todos los proyectos.
+    </p>
+    <a class="btn btn--primary" href="/portafolio/">
+      <svg class="btn__icon" aria-hidden="true">
+        <use href="/portafolio/src/img/icons.svg#i-arrow-left"></use>
+      </svg>
+      Ir al portafolio
+    </a>
+  </main>
+</body>
+</html>

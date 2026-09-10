@@ -1,0 +1,196 @@
+/* ==========================================================================
+   BASE — Estilos por defecto de los elementos HTML
+   --------------------------------------------------------------------------
+   Aquí van los estilos que responden a la ETIQUETA, sin clases. La idea es
+   que un <p> o un <h2> ya se vean bien sin tener que añadirles nada.
+
+   Se carga después de reset.css (que normaliza) y antes de components.css
+   (que define las piezas con nombre). Como aquí se usan selectores de
+   etiqueta, cualquier clase de un componente los sobrescribe sin esfuerzo.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Documento
+   -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+
+  /* Archivo es variable en peso y anchura. Se fija la anchura normal por
+     defecto; los títulos la estrechan para ganar densidad. */
+  font-stretch: 100%;
+  font-optical-sizing: auto;
+
+  /* El fondo cambia con el tema; la transición evita el parpadeo brusco
+     si el usuario alterna el modo del sistema con la página abierta. */
+  transition: background-color var(--duration-base) var(--ease-out-quart);
+}
+
+/* Cualquier elemento con id puede ser destino de un enlace ancla: se le
+   reserva el alto del header fijo para que no quede tapado al saltar.
+   Se aplica a [id] y no a `section` porque varios anclas están en <div>. */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+/* --------------------------------------------------------------------------
+   Tipografía
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-4xl); font-weight: var(--weight-black); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* --------------------------------------------------------------------------
+   Enlaces
+   -------------------------------------------------------------------------- */
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Medios
+   -------------------------------------------------------------------------- */
+
+img, picture, video, svg, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img, video {
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Foco visible
+   Solo con teclado (:focus-visible), así no molesta al usar el ratón.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: var(--border-thick) solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   UTILIDADES MÍNIMAS
+   Solo las imprescindibles. No es un framework de utilidades: la mayoría
+   del estilo vive en componentes con nombre.
+   ========================================================================== */
+
+/* Contenedor centrado con el ancho máximo del sitio ----------------------
+   Se llama .wrapper y no .container a propósito: Tailwind tiene su propia
+   utilidad .container y, como inyecta sus estilos en tiempo de ejecución,
+   sus reglas quedan después de estas en la cascada y ganan a igual
+   especificidad. El nombre se mantiene tras retirar Tailwind. */
+.wrapper {
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Oculto visualmente pero legible por lectores de pantalla -------------- */
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Enlace de salto -------------------------------------------------------
+   Invisible hasta que recibe foco con Tab. Es lo primero que encuentra
+   quien navega con teclado y le permite saltarse la navegación. */
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: calc(var(--z-sticky) + 1);
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  /* -200% garantiza que quede bien fuera de pantalla incluso si el usuario
+     amplía el tamaño de letra del navegador. */
+  transform: translateY(-200%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: var(--color-accent-contrast);
+}
+
+/* Los iconos decorativos no deben capturar el ratón --------------------- */
+[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+/* Sprite SVG ------------------------------------------------------------
+   Contiene los <symbol> que luego se referencian con <use>. No se usa
+   `display: none` porque en algunos navegadores impide que los símbolos
+   referenciados lleguen a renderizarse. */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

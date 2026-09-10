@@ -1,0 +1,151 @@
+/* ==========================================================================
+   RESET — Normaliza las diferencias entre navegadores
+   --------------------------------------------------------------------------
+   Activo en las 6 páginas del sitio.
+
+   Este reset es deliberadamente corto: solo corrige comportamientos por
+   defecto molestos. Los estilos con criterio de diseño van en base.css.
+
+   Se carga DESPUÉS de tokens.css (usa sus variables) y ANTES de base.css
+   (que debe poder sobrescribir lo que aquí se normaliza).
+   ========================================================================== */
+
+/* Caja predecible en todo el documento --------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Sin márgenes heredados del navegador. El espaciado lo decide el diseño,
+   no el user-agent. */
+* {
+  margin: 0;
+}
+
+/* Documento ------------------------------------------------------------ */
+html {
+  /* Evita que iOS agrande el texto al girar el dispositivo */
+  -webkit-text-size-adjust: 100%;
+  /* Desplazamiento suave para los enlaces ancla... */
+  scroll-behavior: smooth;
+}
+
+/* ...salvo que el usuario haya pedido menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;      /* evita el salto por la barra del navegador móvil */
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tipografía ----------------------------------------------------------- */
+
+/* Los títulos no deben partirse de forma desequilibrada */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;      /* el tamaño lo define el diseño, no la etiqueta */
+  font-weight: inherit;
+  line-height: var(--leading-tight);
+  text-wrap: balance;
+}
+
+/* Evita palabras huérfanas al final de los párrafos */
+p, li, figcaption {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+/* Medios --------------------------------------------------------------- */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Preserva la proporción cuando solo se define una dimensión */
+img,
+video {
+  height: auto;
+}
+
+/* Formularios ---------------------------------------------------------- */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+  /* Impide que se pueda encoger hasta ser inusable */
+  min-height: 6rem;
+}
+
+/* Listas y enlaces ----------------------------------------------------- */
+
+/* Solo se quitan las viñetas cuando la lista tiene una clase, para no
+   romper el marcado semántico de las listas de contenido real. */
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accesibilidad -------------------------------------------------------- */
+
+/* Anillo de foco visible y coherente. :focus-visible solo se activa con
+   teclado, así que no molesta al usar el ratón. */
+:focus-visible {
+  outline: var(--border-thick) solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Los elementos con un id son destino de enlaces ancla: se les deja aire
+   por debajo del header fijo. Aplicado a [id] y no a `section`, porque
+   varios anclas del sitio están en <div>. */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+/* Oculta visualmente pero mantiene el elemento accesible a los lectores
+   de pantalla. Se usa en el enlace de salto y en etiquetas de iconos. */
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Los iconos decorativos nunca deben capturar eventos ni foco */
+[aria-hidden='true'] {
+  pointer-events: none;
+}

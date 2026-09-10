@@ -1,0 +1,415 @@
+/* ==========================================================================
+   TOKENS — Fuente única de verdad del sistema de diseño
+   --------------------------------------------------------------------------
+   Dos capas:
+
+   1. PRIMITIVAS  valores crudos (--indigo-600, --amber-400, --neutral-200...).
+                  No se usan directamente en los componentes.
+   2. SEMÁNTICAS  el significado (--color-text, --color-surface...).
+                  ESTAS son las que se usan al construir la interfaz.
+
+   El modo oscuro solo redefine la capa semántica: ningún componente
+   necesita saber que existe un tema oscuro.
+
+   COLOR: se define en OKLCH, no en hexadecimal. OKLCH es perceptualmente
+   uniforme, así que dos tonos con la misma L se ven igual de claros aunque
+   cambie el matiz, y bajar la croma cerca de los extremos evita el aspecto
+   chillón. Los valores de la rampa se calcularon y se verificaron contra
+   WCAG antes de escribirlos aquí, y todos caen dentro del gamut sRGB: el
+   navegador pinta exactamente el color calculado, sin recortarlo.
+
+   Ningún neutro es blanco ni negro puro: todos llevan una pizca del matiz
+   de marca (croma 0.002–0.015), lo que integra los grises con el índigo.
+
+   DOS COLORES, NO UNO. El índigo es la marca y hace el trabajo estructural:
+   enlaces, botones, la franja plena. El ámbar es el contrapunto y aparece
+   en muy pocos sitios —los números de proyecto, el bloque tras el retrato,
+   las etiquetas dentro de la franja—. La proporción importa: si el ámbar
+   se reparte por toda la página, los dos colores compiten y ninguno manda.
+   ========================================================================== */
+
+:root {
+  /* ======================================================================
+     1. PRIMITIVAS — COLOR
+
+     Matiz de marca: 272 (índigo). La rampa está anclada al 600, que resuelve
+     a #4655ec: un azul con la croma alta suficiente para no leerse como
+     "azul de sistema operativo", y con la deriva justa hacia el violeta que
+     lo separa del azul corporativo genérico.
+
+     La croma sube hacia el centro de la rampa y cae en los extremos. En los
+     tonos claros (50–300) está deliberadamente baja: a esa luminosidad el
+     matiz 272 se satura muy rápido y se sale del gamut sRGB.
+     ====================================================================== */
+
+  --indigo-50:  oklch(0.966 0.014 272);
+  --indigo-100: oklch(0.932 0.031 272);
+  --indigo-200: oklch(0.878 0.055 272);
+  --indigo-300: oklch(0.800 0.098 272);
+  --indigo-400: oklch(0.705 0.142 272);
+  --indigo-500: oklch(0.615 0.200 272);
+  --indigo-600: oklch(0.535 0.225 272);   /* el índigo de marca */
+  --indigo-700: oklch(0.462 0.205 272);
+  --indigo-800: oklch(0.392 0.170 273);
+  --indigo-900: oklch(0.312 0.132 274);
+  --indigo-950: oklch(0.222 0.088 275);
+
+  /* Ámbar: el acento secundario, complementario del índigo.
+
+     El matiz gira al bajar por la rampa (86° arriba, 52° abajo) en lugar de
+     mantenerse fijo. Un amarillo puro oscurecido a matiz constante se vuelve
+     verde oliva; girándolo hacia el naranja, los tonos oscuros siguen
+     leyéndose como ámbar y no como barro. */
+
+  --amber-50:  oklch(0.975 0.022 86);
+  --amber-100: oklch(0.950 0.050 86);
+  --amber-200: oklch(0.900 0.092 84);
+  --amber-300: oklch(0.850 0.128 81);
+  --amber-400: oklch(0.792 0.150 76);
+  --amber-500: oklch(0.730 0.158 68);
+  --amber-600: oklch(0.655 0.150 60);
+  --amber-700: oklch(0.560 0.127 56);
+  --amber-800: oklch(0.470 0.102 54);
+  --amber-900: oklch(0.380 0.080 52);
+
+  --neutral-0:   oklch(0.995 0.002 272);
+  --neutral-50:  oklch(0.978 0.005 272);
+  --neutral-100: oklch(0.952 0.007 272);
+  --neutral-200: oklch(0.910 0.010 272);
+  --neutral-300: oklch(0.845 0.012 272);
+  --neutral-400: oklch(0.700 0.014 272);
+  /* 450 y 550 existen para el texto terciario (etiquetas, fechas). Ningún
+     valor único cumple AA en los dos temas: sobre fondo claro hace falta
+     L <= 0.53 y sobre fondo oscuro L >= 0.61. Cada tema usa el suyo. */
+  --neutral-450: oklch(0.652 0.015 272);
+  --neutral-500: oklch(0.575 0.015 272);
+  --neutral-550: oklch(0.530 0.015 272);
+  --neutral-600: oklch(0.478 0.015 272);
+  --neutral-700: oklch(0.388 0.014 272);
+  --neutral-800: oklch(0.292 0.013 272);
+  --neutral-900: oklch(0.215 0.011 272);
+  --neutral-950: oklch(0.165 0.009 272);
+
+  --red-500: oklch(0.577 0.213 27);
+  --red-400: oklch(0.680 0.190 25);
+
+  /* Verde solo para el estado de éxito del formulario. No forma parte de la
+     identidad: existe porque el verde es la convención de "ha ido bien" y
+     ni el índigo ni el ámbar pueden comunicar eso sin ambigüedad. */
+  --emerald-400: oklch(0.760 0.150 158);
+  --emerald-700: oklch(0.500 0.110 158);
+
+  /* ======================================================================
+     2. PRIMITIVAS — TIPOGRAFÍA
+     Archivo: grotesca de señalética con ejes variables de peso y anchura.
+     Se usa UNA sola familia, con contraste fuerte de peso y ancho en lugar
+     de mezclar dos tipografías. La anchura estrecha (--width-condensed) se
+     reserva para los títulos grandes, donde aporta densidad y carácter.
+     ====================================================================== */
+
+  --font-sans:
+    'Archivo',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+
+  --font-mono:
+    ui-monospace,
+    'Cascadia Code',
+    'Source Code Pro',
+    Menlo,
+    Consolas,
+    monospace;
+
+  /* Ejes variables de Archivo */
+  --width-condensed: 88;
+  --width-normal: 100;
+  --width-expanded: 112;
+
+  /* Escala modular ~1.28, fluida con clamp(). Los saltos grandes son
+     deliberados: una escala plana se lee como falta de decisión. */
+  --text-xs:   0.75rem;                                   /* 12px */
+  --text-sm:   0.875rem;                                  /* 14px */
+  --text-base: 1rem;                                      /* 16px */
+  --text-lg:   1.125rem;                                  /* 18px */
+  --text-xl:   clamp(1.25rem, 0.4vw + 1.15rem, 1.4rem);
+  --text-2xl:  clamp(1.5rem,  1.0vw + 1.25rem, 1.85rem);
+  --text-3xl:  clamp(1.9rem,  1.8vw + 1.45rem, 2.5rem);
+  --text-4xl:  clamp(2.4rem,  3.0vw + 1.65rem, 3.5rem);
+  --text-5xl:  clamp(3rem,    5.0vw + 1.75rem, 5rem);
+  --text-display: clamp(3.5rem, 9vw + 1rem, 8.5rem);      /* solo para el hero */
+
+  --weight-normal:    400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-black:     800;
+
+  --leading-none:    1;
+  --leading-tight:   1.08;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.06em;
+
+  /* ======================================================================
+     3. PRIMITIVAS — ESPACIADO
+     Base 4px. Usar siempre estos valores mantiene el ritmo vertical.
+     ====================================================================== */
+
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+
+  /* Separación entre secciones: generosa y fluida. El ritmo se construye
+     alternando estos huecos amplios con agrupaciones apretadas. */
+  --space-section: clamp(5rem, 11vw, 10rem);
+
+  /* ======================================================================
+     4. PRIMITIVAS — FORMA Y MOVIMIENTO
+     ====================================================================== */
+
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  --border-thin:  1px;
+  --border-thick: 2px;
+
+  --duration-fast:   160ms;
+  --duration-base:   320ms;
+  --duration-slow:   620ms;
+  --duration-slower: 900ms;
+
+  /* Curvas exponenciales de salida: arrancan rápido y frenan largo, que es
+     como se mueven las cosas con masa. Sin rebote ni elástico. */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Alias heredado, para no romper componentes ya escritos */
+  --ease-out: var(--ease-out-quint);
+
+  /* ======================================================================
+     5. LAYOUT
+     ====================================================================== */
+
+  --width-content: 78rem;   /* ancho máximo general */
+  --width-text:    38rem;   /* columna de lectura */
+  --width-prose:   65ch;
+  --gutter:        clamp(1.25rem, 5vw, 3rem);
+  --header-height: 4.5rem;
+
+  --z-base:    1;
+  --z-sticky:  100;
+  --z-float:   200;
+  --z-overlay: 300;
+  --z-modal:   400;
+
+  /* ======================================================================
+     6. SEMÁNTICAS — TEMA CLARO (por defecto)
+     El claro es el escenario principal: alguien revisando candidatos en un
+     portátil de trabajo, de día.
+     ====================================================================== */
+
+  --color-bg:            var(--neutral-50);
+  --color-bg-subtle:     var(--neutral-100);
+  --color-surface:       var(--neutral-0);
+  --color-surface-hover: var(--neutral-100);
+
+  --color-text:          var(--neutral-900);
+  --color-text-muted:    var(--neutral-600);
+  --color-text-subtle:   var(--neutral-550);
+  --color-text-inverse:  var(--neutral-0);
+
+  --color-border:        var(--neutral-200);
+  --color-border-strong: var(--neutral-300);
+
+  --color-accent:          var(--indigo-700);
+  --color-accent-hover:    var(--indigo-800);
+  --color-accent-contrast: var(--neutral-0);
+  --color-accent-subtle:   var(--indigo-50);
+  --color-accent-muted:    var(--indigo-200);
+  --color-brand:           var(--indigo-600);
+
+  /* Superficie de marca: la franja índigo plena que carga la identidad */
+  --color-brand-surface:     var(--indigo-800);
+  --color-brand-surface-alt: var(--indigo-900);
+  --color-on-brand:          var(--indigo-50);
+  --color-on-brand-muted:    var(--indigo-200);
+  --color-on-brand-border:   oklch(0.966 0.014 272 / 0.22);
+  /* El ámbar dentro de la franja: es lo que impide que el bloque de color
+     más grande de la página se lea como un rectángulo monocromo. 6.3:1
+     sobre la superficie, así que vale también para texto pequeño. */
+  --color-on-brand-accent:   var(--amber-300);
+
+  /* --- Acento secundario (ámbar) ----------------------------------------
+     Dos tokens y no uno, porque el ámbar no puede ser un único valor: el
+     tono vivo que funciona como mancha de color no llega a 4.5:1 para texto
+     pequeño sobre fondo claro, y el tono que sí llega ya no es vivo.
+
+       highlight         elementos gráficos y texto grande  (3.1:1)
+       highlight-strong  texto pequeño, cumple AA           (6.6:1)
+
+     Si en algún momento hace falta una etiqueta de fondo ámbar, los valores
+     ya están comprobados: --amber-50 de fondo con --amber-900 de texto da
+     9.6:1 en claro, y --neutral-950 sobre --amber-400 da 9.8:1 en oscuro.
+     No se declaran como token hasta que exista el componente que los use. */
+  --color-highlight:        var(--amber-600);
+  --color-highlight-strong: var(--amber-800);
+
+  --color-danger:  var(--red-500);
+  --color-success: var(--emerald-700);
+  --color-focus:   var(--indigo-700);
+
+  --shadow-sm: 0 1px 2px oklch(0.165 0.009 272 / 0.07);
+  --shadow-md: 0 2px 4px oklch(0.165 0.009 272 / 0.06), 0 6px 16px oklch(0.165 0.009 272 / 0.08);
+  --shadow-lg: 0 4px 8px oklch(0.165 0.009 272 / 0.07), 0 18px 40px oklch(0.165 0.009 272 / 0.12);
+  --shadow-focus: 0 0 0 3px oklch(0.462 0.205 272 / 0.35);
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   7. SEMÁNTICAS — TEMA OSCURO
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg:            var(--neutral-950);
+    --color-bg-subtle:     var(--neutral-800);
+    --color-surface:       var(--neutral-900);
+    --color-surface-hover: var(--neutral-800);
+
+    --color-text:          var(--neutral-100);
+    --color-text-muted:    var(--neutral-400);
+    --color-text-subtle:   var(--neutral-450);
+    --color-text-inverse:  var(--neutral-950);
+
+    --color-border:        var(--neutral-800);
+    --color-border-strong: var(--neutral-700);
+
+    /* En oscuro el acento sube en la rampa: los índigos profundos no
+       contrastan contra un fondo oscuro. */
+    --color-accent:          var(--indigo-400);
+    --color-accent-hover:    var(--indigo-300);
+    --color-accent-contrast: var(--neutral-950);
+    --color-accent-subtle:   oklch(0.535 0.225 272 / 0.16);
+    --color-accent-muted:    var(--indigo-800);
+    --color-brand:           var(--indigo-500);
+
+    --color-brand-surface:     var(--indigo-900);
+    --color-brand-surface-alt: var(--indigo-950);
+    --color-on-brand:          var(--indigo-50);
+    --color-on-brand-muted:    var(--indigo-300);
+    --color-on-brand-border:   oklch(0.966 0.014 272 / 0.16);
+    --color-on-brand-accent:   var(--amber-300);
+
+    /* En oscuro el ámbar sí llega a AA como texto pequeño (9.8:1), así que
+       highlight y highlight-strong pueden ser el mismo tono vivo. */
+    --color-highlight:        var(--amber-400);
+    --color-highlight-strong: var(--amber-400);
+
+    --color-danger:  var(--red-400);
+    --color-success: var(--emerald-400);
+    --color-focus:   var(--indigo-400);
+
+    /* Las sombras casi no se ven sobre fondo oscuro: se refuerzan */
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.45);
+    --shadow-md: 0 2px 4px oklch(0 0 0 / 0.45), 0 6px 16px oklch(0 0 0 / 0.4);
+    --shadow-lg: 0 4px 8px oklch(0 0 0 / 0.5), 0 18px 40px oklch(0 0 0 / 0.45);
+    --shadow-focus: 0 0 0 3px oklch(0.705 0.142 272 / 0.45);
+
+    /* El texto claro sobre fondo oscuro se lee más fino y pide más aire */
+    --leading-normal:  1.55;
+    --leading-relaxed: 1.72;
+
+    color-scheme: dark;
+  }
+}
+
+/* Mismo bloque cuando el tema se fuerza manualmente */
+:root[data-theme='dark'] {
+  --color-bg:            var(--neutral-950);
+  --color-bg-subtle:     var(--neutral-800);
+  --color-surface:       var(--neutral-900);
+  --color-surface-hover: var(--neutral-800);
+
+  --color-text:          var(--neutral-100);
+  --color-text-muted:    var(--neutral-400);
+  --color-text-subtle:   var(--neutral-450);
+  --color-text-inverse:  var(--neutral-950);
+
+  --color-border:        var(--neutral-800);
+  --color-border-strong: var(--neutral-700);
+
+  --color-accent:          var(--indigo-400);
+  --color-accent-hover:    var(--indigo-300);
+  --color-accent-contrast: var(--neutral-950);
+  --color-accent-subtle:   oklch(0.535 0.225 272 / 0.16);
+  --color-accent-muted:    var(--indigo-800);
+  --color-brand:           var(--indigo-500);
+
+  --color-brand-surface:     var(--indigo-900);
+  --color-brand-surface-alt: var(--indigo-950);
+  --color-on-brand:          var(--indigo-50);
+  --color-on-brand-muted:    var(--indigo-300);
+  --color-on-brand-border:   oklch(0.966 0.014 272 / 0.16);
+  --color-on-brand-accent:   var(--amber-300);
+
+  --color-highlight:        var(--amber-400);
+  --color-highlight-strong: var(--amber-400);
+
+  --color-danger:  var(--red-400);
+  --color-success: var(--emerald-400);
+  --color-focus:   var(--indigo-400);
+
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.45);
+  --shadow-md: 0 2px 4px oklch(0 0 0 / 0.45), 0 6px 16px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 4px 8px oklch(0 0 0 / 0.5), 0 18px 40px oklch(0 0 0 / 0.45);
+  --shadow-focus: 0 0 0 3px oklch(0.705 0.142 272 / 0.45);
+
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.72;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   8. MOVIMIENTO REDUCIDO
+   Con la dirección elegida (movimiento notable) esto deja de ser un detalle
+   y pasa a ser un requisito: todas las transiciones y revelados del sitio
+   usan estos tokens, así que ponerlos a cero los desactiva todos de golpe.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast:   0.01ms;
+    --duration-base:   0.01ms;
+    --duration-slow:   0.01ms;
+    --duration-slower: 0.01ms;
+  }
+}

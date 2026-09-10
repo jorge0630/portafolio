@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AgroIA — Proyecto de Jorge Quejada</title>
+  <meta name="description" content="Chatbot con machine learning que predice el rendimiento de cultivos en toneladas por hectárea y recomienda qué sembrar, a partir de datos históricos.">
+  <link rel="canonical" href="https://jorge0630.github.io/portafolio/views/proyecto-agroia.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AgroIA — Proyecto de Jorge Quejada">
+  <meta property="og:description" content="Chatbot con machine learning que predice el rendimiento de cultivos en toneladas por hectárea y recomienda qué sembrar, a partir de datos históricos.">
+  <meta property="og:url" content="https://jorge0630.github.io/portafolio/views/proyecto-agroia.html">
+  <meta property="og:image" content="https://jorge0630.github.io/portafolio/src/img/agroia1.png">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../src/img/marca/favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="../src/css/tokens.css">
+  <link rel="stylesheet" href="../src/css/reset.css">
+  <link rel="stylesheet" href="../src/css/base.css">
+  <link rel="stylesheet" href="../src/css/components.css">
+
+  <script type="module" src="../src/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="wrapper site-header__inner">
+      <a class="brand" href="../index.html">
+        <svg class="brand__logo" viewBox="0 0 196.39 93.5" aria-hidden="true"><use href="../src/img/icons.svg#i-marca"></use></svg>Jorge Quejada<span class="brand__dot" aria-hidden="true"></span>
+      </a>
+      <a class="header-link" href="../index.html">
+        <svg aria-hidden="true"><use href="../src/img/icons.svg#i-arrow-left"></use></svg>
+        Volver<span class="header-link__more"> al portafolio</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <div class="page-hero">
+      <div class="wrapper">
+        <span class="page-hero__index">04 / 08</span>
+        <h1 class="page-hero__title">AgroIA</h1>
+        <p class="page-hero__lead">Un modelo predictivo detrás de un chat, para que consultarlo no exija saber de estadística.</p>
+
+        <dl class="page-hero__sheet">
+            <div>
+              <dt>Rol</dt>
+              <dd>Modelo predictivo e interfaz</dd>
+            </div>
+            <div>
+              <dt>Periodo</dt>
+              <dd>2025</dd>
+            </div>
+            <div>
+              <dt>Estado</dt>
+              <dd>En línea</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>Python, Flask, Pandas, SpaCy</dd>
+            </div>
+        </dl>
+
+        <div class="page-hero__actions">
+            <a class="btn btn--on-brand" href="http://72.60.127.176/" target="_blank" rel="noopener noreferrer">
+              <svg class="btn__icon" aria-hidden="true"><use href="../src/img/icons.svg#i-external"></use></svg>
+              Probar AgroIA
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          <a class="btn btn--ghost-brand" href="https://github.com/cp327/agroiaproyecto" target="_blank" rel="noopener noreferrer">
+            <svg class="btn__icon" aria-hidden="true"><use href="../src/img/icons.svg#i-github"></use></svg>
+            Ver el código
+            <span class="visually-hidden">de AgroIA (se abre en una pestaña nueva)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper page">
+
+      <section data-reveal>
+        <h2 class="section__heading">Las capturas</h2>
+        <ul class="gallery">
+            <li>
+              <button class="gallery__item" type="button" data-lightbox>
+                <img src="../src/img/agroia1.png"
+                     alt="AgroIA — captura 1 de 4"
+                     width="1920" height="1020" loading="lazy" decoding="async">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__item" type="button" data-lightbox>
+                <img src="../src/img/agroia2.png"
+                     alt="AgroIA — captura 2 de 4"
+                     width="1920" height="1020" loading="lazy" decoding="async">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__item" type="button" data-lightbox>
+                <img src="../src/img/agroia3.png"
+                     alt="AgroIA — captura 3 de 4"
+                     width="1920" height="1020" loading="lazy" decoding="async">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__item" type="button" data-lightbox>
+                <img src="../src/img/agroia4.png"
+                     alt="AgroIA — captura 4 de 4"
+                     width="1920" height="1020" loading="lazy" decoding="async">
+              </button>
+            </li>
+        </ul>
+          <p class="note"><strong>Credenciales de prueba</strong><br>usuario: <code>agronomo</code> &nbsp;·&nbsp; contraseña: <code>agro</code></p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">El problema</h2>
+          <p class="prose">Un agricultor no va a consultar un modelo estadístico, por buenos que sean sus resultados. Pero sí escribe en un chat, porque ya lo hace todos los días.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Qué construí</h2>
+          <p class="prose">Entrené un modelo con <span class="mark">datos históricos de producción agrícola</span> y lo puse detrás de un chatbot. El usuario pregunta en lenguaje natural y recibe la productividad estimada en toneladas por hectárea, más una recomendación de qué sembrar.</p>
+          <p class="prose">Las predicciones se ajustan al tipo de cultivo, la región y el año, así que la respuesta es específica y no un promedio genérico.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Objetivos</h2>
+        <ul class="list">
+          <li>Dar a los agricultores una herramienta de apoyo para decidir qué sembrar.</li>
+          <li>Predecir el rendimiento en toneladas por hectárea de distintos cultivos.</li>
+          <li>Hacer accesible un modelo predictivo sin exigir conocimientos técnicos.</li>
+        </ul>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Retos técnicos</h2>
+          <p class="prose">Lo más costoso fue limpiar y estructurar el volumen de datos agrícolas antes de poder entrenar nada. Apliqué técnicas de <span class="mark">preprocesamiento</span> y comparé regresión lineal contra Random Forest, quedándome con el que daba mejor precisión.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Qué me llevo</h2>
+          <p class="prose">Este proyecto conecta directamente con mi técnico en inteligencia artificial: fue donde apliqué <span class="mark">machine learning sobre datos reales</span>, con todo el trabajo sucio que eso implica.</p>
+          <p class="prose">A futuro quiero sumar clima y tipo de suelo como variables, y acompañar las predicciones con un panel de gráficas.</p>
+      </section>
+
+      <nav class="project-nav" aria-label="Otros proyectos">
+        <a class="project-nav__link" href="proyecto-siticolombia.html">
+          <span class="project-nav__dir">Anterior</span>
+          <span class="project-nav__name">SITI Colombia</span>
+        </a>
+        <a class="project-nav__link project-nav__link--next" href="proyecto-southern-roofing.html">
+          <span class="project-nav__dir">Siguiente</span>
+          <span class="project-nav__name">Southern Roofing &amp; Remodeling</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <a class="float-wa" href="https://wa.me/573207147078" target="_blank" rel="noopener noreferrer">
+    <svg aria-hidden="true"><use href="../src/img/icons.svg#i-whatsapp"></use></svg>
+    <span class="visually-hidden">Escríbeme por WhatsApp (se abre en una pestaña nueva)</span>
+    <span class="float-wa__tip" aria-hidden="true">Chatea conmigo</span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="site-footer__top">
+        <p class="site-footer__word">Hablemos.</p>
+        <ul class="social">
+          <li>
+            <a class="social__link" href="https://github.com/jorge0630" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true"><use href="../src/img/icons.svg#i-github"></use></svg>
+              <span class="visually-hidden">GitHub (se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="https://wa.me/573207147078" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true"><use href="../src/img/icons.svg#i-whatsapp"></use></svg>
+              <span class="visually-hidden">WhatsApp (se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="site-footer__sign">
+
+          <svg class="site-footer__signature" viewBox="0 0 563.654 97" role="img" aria-label="Jorge Quejada, Software Developer"><use href="../src/img/icons.svg#i-firma"></use></svg>
+
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-anio>2026</span> Jorge Quejada</p>
+        <p class="site-footer__note">Cartagena de Indias, Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox. <dialog> aporta de forma nativa el atrapado del foco, el
+       cierre con Esc, el fondo (::backdrop) y la devolución del foco. -->
+  <dialog class="lightbox" id="lightbox" aria-label="Visor de capturas">
+    <button class="lightbox__btn lightbox__btn--close" type="button"
+            data-lightbox-close aria-label="Cerrar el visor">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-close"></use></svg>
+    </button>
+    <button class="lightbox__btn lightbox__btn--prev" type="button"
+            data-lightbox-prev aria-label="Imagen anterior">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-chevron-left"></use></svg>
+    </button>
+    <button class="lightbox__btn lightbox__btn--next" type="button"
+            data-lightbox-next aria-label="Imagen siguiente">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-chevron-right"></use></svg>
+    </button>
+
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" data-lightbox-img src="" alt="">
+      <figcaption class="lightbox__caption">
+        <span data-lightbox-caption></span>
+        <span class="lightbox__count" data-lightbox-count></span>
+      </figcaption>
+    </figure>
+  </dialog>
+</body>
+</html>

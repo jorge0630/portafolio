@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Automatización de WhatsApp — Proyecto de Jorge Quejada</title>
+  <meta name="description" content="Recordatorios automáticos por WhatsApp Business API integrados con Google Calendar mediante Google Apps Script.">
+  <link rel="canonical" href="https://jorge0630.github.io/portafolio/views/proyecto-whatsapp.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Automatización de WhatsApp — Proyecto de Jorge Quejada">
+  <meta property="og:description" content="Recordatorios automáticos por WhatsApp Business API integrados con Google Calendar mediante Google Apps Script.">
+  <meta property="og:url" content="https://jorge0630.github.io/portafolio/views/proyecto-whatsapp.html">
+  <meta property="og:image" content="https://jorge0630.github.io/portafolio/src/img/WA1.png">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../src/img/marca/favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="../src/css/tokens.css">
+  <link rel="stylesheet" href="../src/css/reset.css">
+  <link rel="stylesheet" href="../src/css/base.css">
+  <link rel="stylesheet" href="../src/css/components.css">
+
+  <script type="module" src="../src/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="wrapper site-header__inner">
+      <a class="brand" href="../index.html">
+        <svg class="brand__logo" viewBox="0 0 196.39 93.5" aria-hidden="true"><use href="../src/img/icons.svg#i-marca"></use></svg>Jorge Quejada<span class="brand__dot" aria-hidden="true"></span>
+      </a>
+      <a class="header-link" href="../index.html">
+        <svg aria-hidden="true"><use href="../src/img/icons.svg#i-arrow-left"></use></svg>
+        Volver<span class="header-link__more"> al portafolio</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <div class="page-hero">
+      <div class="wrapper">
+        <span class="page-hero__index">06 / 08</span>
+        <h1 class="page-hero__title">Recordatorios por WhatsApp</h1>
+        <p class="page-hero__lead">Automatización que convierte el calendario de la empresa en recordatorios que salen solos.</p>
+
+        <dl class="page-hero__sheet">
+            <div>
+              <dt>Rol</dt>
+              <dd>Integración de APIs y automatización</dd>
+            </div>
+            <div>
+              <dt>Periodo</dt>
+              <dd>2025</dd>
+            </div>
+            <div>
+              <dt>Estado</dt>
+              <dd>En producción</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>Google Apps Script, Calendar API, Meta for Developers</dd>
+            </div>
+        </dl>
+
+        <div class="page-hero__actions">
+          <a class="btn btn--ghost-brand" href="https://github.com/cp327/automatizacionWAProyecto" target="_blank" rel="noopener noreferrer">
+            <svg class="btn__icon" aria-hidden="true"><use href="../src/img/icons.svg#i-github"></use></svg>
+            Ver el código
+            <span class="visually-hidden">de Recordatorios por WhatsApp (se abre en una pestaña nueva)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper page">
+
+      <section data-reveal>
+        <h2 class="section__heading">Las capturas</h2>
+        <ul class="gallery">
+            <li>
+              <button class="gallery__item" type="button" data-lightbox>
+                <img src="../src/img/WA1.png"
+                     alt="Recordatorios por WhatsApp — captura 1 de 1"
+                     width="1385" height="971" loading="lazy" decoding="async">
+              </button>
+            </li>
+        </ul>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">El problema</h2>
+          <p class="prose">Alguien tenía que abrir el calendario cada mañana, mirar qué vencía y escribir los recordatorios a mano. Un trabajo que no falla por difícil, sino porque un día se olvida.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Qué construí</h2>
+          <p class="prose">Conecté Google Calendar con la API de WhatsApp Business usando Apps Script como puente. Los mensajes salen solos en las fechas clave, personalizados por cliente, y cada envío queda registrado para poder auditarlo después.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Objetivos</h2>
+        <ul class="list">
+          <li>Automatizar los recordatorios de pagos, citas y eventos.</li>
+          <li>Eliminar el trabajo manual diario de revisar el calendario.</li>
+          <li>Mantener trazabilidad de cada mensaje enviado.</li>
+        </ul>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Retos técnicos</h2>
+          <p class="prose">La integración con Meta Developers exige autenticación por tokens y permisos concretos, que fue donde más tiempo se fue. Apps Script resultó el puente más simple entre ambos servicios, sin necesidad de mantener un servidor propio.</p>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section__heading">Qué me llevo</h2>
+          <p class="prose">Reforcé integración de APIs externas, manejo de tokens y automatización de procesos. La lección de fondo es que un sistema de logs desde el primer día ahorra muchísimo tiempo de diagnóstico.</p>
+          <p class="prose">Quiero añadirle un panel para monitorear los envíos y respuestas automáticas a preguntas frecuentes.</p>
+      </section>
+
+      <nav class="project-nav" aria-label="Otros proyectos">
+        <a class="project-nav__link" href="proyecto-southern-roofing.html">
+          <span class="project-nav__dir">Anterior</span>
+          <span class="project-nav__name">Southern Roofing &amp; Remodeling</span>
+        </a>
+        <a class="project-nav__link project-nav__link--next" href="proyecto-byb.html">
+          <span class="project-nav__dir">Siguiente</span>
+          <span class="project-nav__name">B&amp;B Turismo y Negocios</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <a class="float-wa" href="https://wa.me/573207147078" target="_blank" rel="noopener noreferrer">
+    <svg aria-hidden="true"><use href="../src/img/icons.svg#i-whatsapp"></use></svg>
+    <span class="visually-hidden">Escríbeme por WhatsApp (se abre en una pestaña nueva)</span>
+    <span class="float-wa__tip" aria-hidden="true">Chatea conmigo</span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="site-footer__top">
+        <p class="site-footer__word">Hablemos.</p>
+        <ul class="social">
+          <li>
+            <a class="social__link" href="https://github.com/jorge0630" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true"><use href="../src/img/icons.svg#i-github"></use></svg>
+              <span class="visually-hidden">GitHub (se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="https://wa.me/573207147078" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true"><use href="../src/img/icons.svg#i-whatsapp"></use></svg>
+              <span class="visually-hidden">WhatsApp (se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="site-footer__sign">
+
+          <svg class="site-footer__signature" viewBox="0 0 563.654 97" role="img" aria-label="Jorge Quejada, Software Developer"><use href="../src/img/icons.svg#i-firma"></use></svg>
+
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-anio>2026</span> Jorge Quejada</p>
+        <p class="site-footer__note">Cartagena de Indias, Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox. <dialog> aporta de forma nativa el atrapado del foco, el
+       cierre con Esc, el fondo (::backdrop) y la devolución del foco. -->
+  <dialog class="lightbox" id="lightbox" aria-label="Visor de capturas">
+    <button class="lightbox__btn lightbox__btn--close" type="button"
+            data-lightbox-close aria-label="Cerrar el visor">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-close"></use></svg>
+    </button>
+    <button class="lightbox__btn lightbox__btn--prev" type="button"
+            data-lightbox-prev aria-label="Imagen anterior">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-chevron-left"></use></svg>
+    </button>
+    <button class="lightbox__btn lightbox__btn--next" type="button"
+            data-lightbox-next aria-label="Imagen siguiente">
+      <svg aria-hidden="true"><use href="../src/img/icons.svg#i-chevron-right"></use></svg>
+    </button>
+
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" data-lightbox-img src="" alt="">
+      <figcaption class="lightbox__caption">
+        <span data-lightbox-caption></span>
+        <span class="lightbox__count" data-lightbox-count></span>
+      </figcaption>
+    </figure>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jorge0630.github.io/portafolio/sitemap.xml
